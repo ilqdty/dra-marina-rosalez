@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#6B7F5E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>Dra. Marina Rosalez — Cuidado Integral e Longevidade</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #6B7F5E;
+    --sage-dark: #556A49;
+    --sage-soft: #8FA181;
+    --sage-bg: #EEF1EA;
+    --sage-line: #9DAE93;
+    --cream: #FAF9F6;
+    --warm: #F5F3EE;
+    --text: #222222;
+    --text-mid: #444444;
+    --text-light: #6E6E6E;
+    --white: #FFFFFF;
+    --border: #E4E1DB;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Outfit', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+  a, button { -webkit-tap-highlight-color: rgba(107,127,94,0.2); }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--text);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ═══ NAV ═══ */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; width: 100%; z-index: 100;
+    background: rgba(250,249,246,0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid transparent;
+    padding: 14px 0;
+    padding-top: calc(14px + env(safe-area-inset-top));
+    transition: all 0.4s ease;
+  }
+  nav.scrolled { border-bottom-color: var(--border); background: rgba(250,249,246,0.97); }
+  .nav-inner {
+    max-width: 1140px; margin: 0 auto; padding: 0 48px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo {
+    font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500;
+    color: var(--text); text-decoration: none;
+  }
+  .nav-right { display: flex; gap: 28px; align-items: center; }
+  .nav-hamburger { display: none; }
+  .nav-overlay { display: none; }
+  .nav-right a {
+    font-size: 0.82rem; font-weight: 400; color: var(--text-mid);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .nav-right a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--sage); color: var(--white) !important;
+    padding: 10px 24px; border-radius: 6px;
+    font-weight: 500 !important; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--sage-dark); }
+  .nav-social { display: flex; gap: 12px; margin-left: 4px; }
+  .nav-social a {
+    width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-light); transition: all 0.3s;
+  }
+  .nav-social a:hover { border-color: var(--sage); color: var(--sage); }
+  .nav-social svg { width: 14px; height: 14px; }
+
+  /* ═══ HERO — Marcella Dorte style ═══ */
+  .hero {
+    max-width: 1140px; margin: 0 auto;
+    padding: 120px 48px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: end;
+    min-height: 88vh;
+  }
+  .hero-left {
+    padding-bottom: 96px;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.25em; color: var(--sage);
+    margin-bottom: 28px;
+  }
+  .hero-left h1 {
+    font-family: var(--font-serif);
+    font-size: 3.4rem; font-weight: 500;
+    line-height: 1.15; color: var(--text);
+    margin-bottom: 24px;
+  }
+  .hero-left p {
+    font-size: 1.05rem; color: var(--text-mid);
+    line-height: 1.75; margin-bottom: 40px;
+    font-weight: 300; max-width: 420px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--sage); color: var(--white);
+    padding: 16px 36px; border-radius: 8px; text-decoration: none;
+    font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px rgba(107,127,94,0.18);
+  }
+  .btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(107,127,94,0.22); }
+  .btn-primary svg { width: 15px; height: 15px; }
+
+  .hero-right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  /* Decorative botanical element behind photo */
+  .hero-deco {
+    position: absolute;
+    width: 420px; height: 420px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -48%);
+    opacity: 0.12;
+  }
+  .hero-deco svg { width: 100%; height: 100%; }
+  .hero-photo {
+    position: relative; z-index: 2;
+    max-width: 440px; width: 100%;
+  }
+  .hero-photo img {
+    display: block; width: 100%; height: auto;
+    /* Fade: bottom fades into page, sides subtle */
+    -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 98%);
+    mask-image: linear-gradient(to bottom, black 55%, transparent 98%);
+  }
+
+  /* ═══ SECTIONS ═══ */
+  .section-pad {
+    max-width: 1140px; margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .eyebrow {
+    font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.2em; color: var(--sage); margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: var(--font-serif); font-size: 2.2rem;
+    font-weight: 500; line-height: 1.25; color: var(--text);
+  }
+  .divider { max-width: 1140px; margin: 0 auto; padding: 0 48px; }
+  .divider hr { border: none; border-top: 1px solid var(--border); }
+
+  /* ═══ SOBRE MIM — Flow contínuo com Hero ═══ */
+  .sobre-mim {
+    background: var(--cream);
+    padding-top: 64px;
+    padding-bottom: 80px;
+  }
+  .sobre-mim-grid {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .sobre-mim-content p {
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    font-weight: 300;
+  }
+  .sobre-mim-content p + p {
+    margin-top: 20px;
+  }
+  .sobre-mim-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 280px;
+  }
+  .sobre-mim-deco {
+    width: 100%;
+    max-width: 280px;
+    opacity: 0.12;
+    color: var(--sage);
+  }
+  .sobre-mim-deco svg {
+    width: 100%;
+    height: auto;
+  }
+  .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .tag {
+    font-size: 0.72rem; font-weight: 500;
+    padding: 7px 16px; border-radius: 4px;
+    background: var(--sage-bg); color: var(--sage);
+  }
+
+  /* ═══ SERVIÇOS ═══ */
+  .servicos-wrap { background: var(--warm); padding: 80px 48px; }
+  .servicos-inner { max-width: 1140px; margin: 0 auto; }
+  .servicos-inner .section-title { margin-bottom: 48px; }
+  .s-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+  .s-card {
+    background: var(--white); border-radius: 12px;
+    padding: 36px 28px; border: 1px solid var(--border);
+    transition: all 0.35s ease;
+  }
+  .s-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,0.04); border-color: var(--sage-soft); }
+  .s-icon {
+    width: 42px; height: 42px; border-radius: 10px;
+    background: var(--sage-bg); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .s-icon svg { width: 20px; height: 20px; color: var(--sage); }
+  .s-card h3 {
+    font-family: var(--font-serif); font-size: 1.25rem;
+    font-weight: 600; margin-bottom: 10px; color: var(--text);
+  }
+  .s-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.75; font-weight: 300; }
+
+  /* ═══ COMO FUNCIONA ═══ */
+  .como .section-title { margin-bottom: 56px; }
+  .steps-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+  .step {
+    padding: 36px 32px;
+    border-left: 1px solid var(--border);
+  }
+  .step:first-child { border-left: none; padding-left: 0; }
+  .step:last-child { padding-right: 0; }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--sage); color: var(--white);
+    font-family: var(--font-sans); font-size: 0.82rem;
+    font-weight: 600; letter-spacing: 0.02em;
+    margin-bottom: 24px;
+  }
+  .step h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+  .step p { font-size: 0.88rem; color: var(--text-light); line-height: 1.75; font-weight: 300; }
+
+  /* ═══ LEAD CAPTURE — High-end aesthetic ═══ */
+  .lead-section {
+    padding: 100px 48px;
+    background: linear-gradient(165deg, var(--sage) 0%, var(--sage-dark) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .lead-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,255,255,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .lead-inner {
+    max-width: 520px; margin: 0 auto;
+    text-align: center;
+    position: relative; z-index: 1;
+  }
+  .lead-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 32px;
+    transition: transform 0.4s ease;
+  }
+  .lead-icon svg { width: 24px; height: 24px; color: rgba(255,255,255,0.9); }
+  .lead-section .section-title {
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .lead-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 44px;
+  }
+  .lead-form {
+    text-align: left;
+  }
+  .form-group {
+    margin-bottom: 24px;
+  }
+  .lead-input {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 18px 20px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--white);
+    font-weight: 300;
+    transition: all 0.35s ease;
+  }
+  .lead-input::placeholder {
+    color: rgba(255,255,255,0.4);
+  }
+  .lead-input:hover {
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+  }
+  .lead-input:focus {
+    outline: none;
+    border-color: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.08);
+  }
+  .lead-btn {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--white);
+    color: var(--sage-dark);
+    padding: 18px 32px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.35s ease;
+    margin-top: 8px;
+  }
+  .lead-btn svg { width: 16px; height: 16px; transition: transform 0.3s ease; }
+  .lead-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .lead-btn:hover:not(:disabled) svg {
+    transform: translateX(2px);
+  }
+  .lead-btn:disabled {
+    opacity: 0.85;
+    cursor: not-allowed;
+  }
+  .form-note {
+    margin-top: 20px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+    line-height: 1.6;
+    text-align: center;
+  }
+  .lead-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+  }
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: var(--white);
+    animation: successPop 0.5s ease-out;
+  }
+  .lead-success p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.9);
+    font-weight: 300;
+    line-height: 1.75;
+  }
+  @keyframes successPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .lead-btn.is-loading {
+    letter-spacing: 0.12em;
+  }
+
+  /* ═══ FAQ ═══ */
+  .faq-wrap { background: var(--warm); padding: 80px 48px; }
+  .faq-inner { max-width: 720px; margin: 0 auto; }
+  .faq-inner .section-title { margin-bottom: 48px; }
+  .faq-list { display: flex; flex-direction: column; gap: 0; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+  }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-item summary {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 0;
+    font-size: 0.95rem; font-weight: 500; color: var(--text);
+    cursor: pointer; list-style: none;
+    transition: color 0.3s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    font-size: 1.3rem; font-weight: 300; color: var(--sage);
+    transition: transform 0.3s;
+    flex-shrink: 0; margin-left: 16px;
+  }
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+  .faq-item summary:hover { color: var(--sage); }
+  .faq-item p {
+    padding: 0 0 22px;
+    font-size: 0.9rem; color: var(--text-mid);
+    line-height: 1.8; font-weight: 300;
+  }
+
+  /* ═══ CTA ═══ */
+  .cta-section { background: var(--sage); padding: 76px 48px; text-align: center; }
+  .cta-inner { max-width: 520px; margin: 0 auto; }
+  .cta-inner h2 {
+    font-family: var(--font-serif); font-size: 2.2rem;
+    color: var(--white); font-weight: 500; margin-bottom: 14px;
+  }
+  .cta-inner p {
+    font-size: 0.95rem; color: rgba(255,255,255,0.75);
+    margin-bottom: 36px; line-height: 1.7; font-weight: 300;
+  }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--white); color: var(--sage);
+    padding: 16px 36px; border-radius: 8px; text-decoration: none;
+    font-size: 0.88rem; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.03em; transition: all 0.3s ease;
+  }
+  .btn-white:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,0,0,0.12); }
+  .btn-white svg { width: 15px; height: 15px; }
+  .cta-alt {
+    margin-top: 28px;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+  }
+  .cta-alt span {
+    font-size: 0.8rem; color: rgba(255,255,255,0.45);
+    font-weight: 300;
+  }
+  .btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.7);
+    font-size: 0.82rem; font-weight: 400;
+    text-decoration: none;
+    padding: 10px 20px; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+  .btn-whatsapp svg { width: 16px; height: 16px; flex-shrink: 0; }
+  .btn-whatsapp:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+
+  /* ═══ FOOTER ═══ */
+  .footer {
+    background: #1C1C1C;
+    padding: 56px 48px 36px;
+  }
+  .footer-inner {
+    max-width: 1140px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: start;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: var(--font-serif); font-size: 1.2rem;
+    font-weight: 500; color: var(--white); margin-bottom: 10px;
+  }
+  .footer-brand p {
+    font-size: 0.8rem; line-height: 1.7;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-nav { display: flex; gap: 28px; }
+  .footer-nav a {
+    font-size: 0.82rem; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: color 0.3s;
+  }
+  .footer-nav a:hover { color: var(--white); }
+  .footer-icons { display: flex; gap: 12px; }
+  .footer-icons a {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.4);
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .footer-icons a:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
+  .footer-icons svg { width: 16px; height: 16px; }
+  .footer-bottom {
+    max-width: 1140px; margin: 40px auto 0;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 20px; text-align: center;
+  }
+  .footer-bottom span { font-size: 0.7rem; color: rgba(255,255,255,0.2); }
+
+  /* ═══ MOBILE MENU ═══ */
+  .nav-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 99;
+    background: rgba(250,249,246,0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: calc(80px + env(safe-area-inset-top)) 24px 24px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+  .nav-overlay.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+  .nav-overlay-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    gap: 8px;
+  }
+  .nav-overlay-link {
+    padding: 16px 24px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-mid);
+    text-decoration: none;
+    transition: color 0.3s;
+    width: 100%;
+    max-width: 280px;
+  }
+  .nav-overlay-link:hover { color: var(--text); }
+  .nav-overlay-cta {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 14px 28px;
+    background: var(--sage);
+    color: var(--white) !important;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    width: 100%;
+    max-width: 280px;
+  }
+  .nav-overlay-cta:hover { background: var(--sage-dark); }
+  .nav-overlay-social {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+  }
+  .nav-overlay-social a {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+  }
+  .nav-overlay-social a:hover { border-color: var(--sage); color: var(--sage); }
+  .nav-overlay-social svg { width: 20px; height: 20px; }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 900px) {
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 48px;
+      height: 48px;
+      padding: 12px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 101;
+      transition: transform 0.3s ease;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s ease;
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+    .nav-right a:not(.nav-cta):not(.nav-mobile-visible),
+    .nav-social { display: none !important; }
+    .nav-mobile-visible {
+      display: flex !important;
+      align-items: center;
+      font-size: 0.85rem;
+      padding: 8px 12px;
+      min-height: 44px;
+    }
+    .nav-cta { display: none !important; }
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 100px 24px 0;
+      padding-top: calc(100px + env(safe-area-inset-top));
+      min-height: auto;
+      text-align: center;
+    }
+    .hero-left { padding-bottom: 48px; }
+    .hero-left h1 { font-size: 2.2rem; line-height: 1.2; }
+    .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.18em; }
+    .hero-left p { max-width: 100%; font-size: 1rem; }
+    .btn-primary {
+      width: 100%;
+      max-width: 320px;
+      justify-content: center;
+      min-height: 52px;
+      padding: 16px 24px;
+    }
+    .hero-right { order: -1; }
+    .hero-photo { max-width: 280px; }
+    .hero-deco { width: 240px; height: 240px; }
+    .nav-inner { padding: 0 20px; }
+    .section-pad, .servicos-wrap, .cta-section, .footer, .faq-wrap, .lead-section, .divider {
+      padding-left: max(24px, env(safe-area-inset-left));
+      padding-right: max(24px, env(safe-area-inset-right));
+    }
+    .section-pad { padding-top: 56px; padding-bottom: 56px; }
+    .sobre-mim { padding-top: 48px; padding-bottom: 64px; }
+    .servicos-wrap { padding-top: 56px; padding-bottom: 56px; }
+    .lead-section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+      padding-bottom: calc(64px + env(safe-area-inset-bottom));
+    }
+    .cta-section {
+      padding-top: 56px;
+      padding-bottom: 56px;
+      padding-bottom: calc(56px + env(safe-area-inset-bottom));
+    }
+    .footer {
+      padding: 48px 24px 32px;
+      padding-bottom: calc(32px + env(safe-area-inset-bottom));
+    }
+    .form-group { margin-bottom: 20px; }
+    .sobre-mim-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 0 max(24px, env(safe-area-inset-left)) 0 max(24px, env(safe-area-inset-right));
+      text-align: center;
+    }
+    .sobre-mim-visual { justify-self: center; min-height: 180px; }
+    .sobre-mim-deco { max-width: 200px; }
+    .tags { justify-content: center; }
+    .tags { justify-content: center; }
+    .s-grid { grid-template-columns: 1fr; gap: 16px; }
+    .s-card { padding: 28px 24px; }
+    .como .section-title { margin-bottom: 40px; }
+    .steps-row { grid-template-columns: 1fr; gap: 0; }
+    .step {
+      border-left: none;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+    }
+    .step:first-child { border-top: none; }
+    .step-num { margin-left: auto; margin-right: auto; }
+    .footer-inner {
+      flex-direction: column;
+      gap: 32px;
+      text-align: center;
+      align-items: center;
+    }
+    .footer-nav {
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .footer-nav a {
+      min-height: 44px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-icons a {
+      width: 48px;
+      height: 48px;
+    }
+    .section-title { font-size: 1.75rem; }
+    .cta-inner h2 { font-size: 1.85rem; }
+    .btn-white {
+      width: 100%;
+      max-width: 320px;
+      justify-content: center;
+      min-height: 52px;
+    }
+    .btn-whatsapp {
+      min-height: 48px;
+      padding: 12px 24px;
+    }
+    .faq-item summary {
+      padding: 20px 0;
+      min-height: 56px;
+      align-items: center;
+    }
+    .lead-input { font-size: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding-top: calc(90px + env(safe-area-inset-top)); }
+    .sobre-mim { padding-top: 40px; padding-bottom: 56px; }
+    .hero-left h1 { font-size: 1.9rem; }
+    .hero-photo { max-width: 260px; }
+    .section-pad, .servicos-wrap { padding-top: 48px; padding-bottom: 48px; }
+    .section-title { font-size: 1.6rem; }
+    .cta-inner h2 { font-size: 1.65rem; }
+    .lead-section .section-title { font-size: 1.65rem; }
+    .nav-inner { padding: 0 16px; }
+    .section-pad, .servicos-wrap, .cta-section, .footer, .faq-wrap, .lead-section {
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left { animation: fadeUp 0.7s ease-out 0.1s both; }
+  .hero-right { animation: fadeUp 0.6s ease-out; }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Dra. Marina Rosalez</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-right">
+      <a href="#sobre-mim" class="nav-mobile-visible">Sobre mim</a>
+      <a href="#servicos">Consulta</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#contato">Contato</a>
+      <a href="em-breve.html" class="nav-cta">Agendar consulta</a>
+      <div class="nav-social">
+        <a href="https://instagram.com/dramarinarosalez" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="mailto:dramarinarosalez@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <div class="nav-overlay-inner">
+    <a href="#sobre-mim" class="nav-overlay-link">Sobre mim</a>
+    <a href="#servicos" class="nav-overlay-link">Consulta</a>
+    <a href="#como-funciona" class="nav-overlay-link">Como funciona</a>
+    <a href="#duvidas" class="nav-overlay-link">Dúvidas</a>
+    <a href="#newsletter" class="nav-overlay-link">Newsletter</a>
+    <a href="#contato" class="nav-overlay-link">Contato</a>
+    <a href="em-breve.html" class="nav-overlay-cta">Agendar consulta</a>
+    <div class="nav-overlay-social">
+      <a href="https://instagram.com/dramarinarosalez" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="mailto:dramarinarosalez@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Cuidado Integral e Longevidade · Teleconsulta</div>
+    <h1>Cuidar da saúde deveria ser rotina, não urgência.</h1>
+    <p>Acompanhamento médico contínuo e personalizado — de onde você estiver.</p>
+    <a href="em-breve.html" class="btn-primary">
+      Quero agendar uma consulta
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+  </div>
+  <div class="hero-right">
+    <!-- Decorative leaf/circle behind photo -->
+    <div class="hero-deco">
+      <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="180" stroke="#6B7F5E" stroke-width="1"/>
+        <ellipse cx="200" cy="200" rx="130" ry="180" transform="rotate(30 200 200)" stroke="#6B7F5E" stroke-width="0.8"/>
+        <ellipse cx="200" cy="200" rx="130" ry="180" transform="rotate(-30 200 200)" stroke="#6B7F5E" stroke-width="0.8"/>
+        <circle cx="200" cy="200" r="80" stroke="#6B7F5E" stroke-width="0.6"/>
+      </svg>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/foto-marina.jpeg" alt="Dra. Marina Rosalez">
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MIM -->
+<section class="sobre-mim" id="sobre-mim">
+  <div class="sobre-mim-grid">
+    <div class="sobre-mim-visual">
+      <div class="sobre-mim-deco">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="200" cy="200" r="180" stroke="currentColor" stroke-width="1"/>
+          <ellipse cx="200" cy="200" rx="130" ry="180" transform="rotate(30 200 200)" stroke="currentColor" stroke-width="0.8"/>
+          <ellipse cx="200" cy="200" rx="130" ry="180" transform="rotate(-30 200 200)" stroke="currentColor" stroke-width="0.8"/>
+          <circle cx="200" cy="200" r="80" stroke="currentColor" stroke-width="0.6"/>
+        </svg>
+      </div>
+    </div>
+    <div class="sobre-mim-content">
+      <div class="eyebrow">Sobre mim</div>
+      <div class="section-title">Medicina com atenção, tempo e continuidade.</div>
+      <p>Sou médica clínica com foco em cuidado integral e longevidade. Acredito que o cuidado real acontece no acompanhamento — não em consultas pontuais e apressadas. Cada paciente merece tempo, escuta e atenção ao que realmente importa.</p>
+      <p>Atendo por teleconsulta para que a distância não seja um obstáculo entre você e um cuidado médico de qualidade. Meu objetivo é construir uma relação de confiança e acompanhar sua saúde de forma contínua e personalizada.</p>
+      <div class="tags">
+        <span class="tag">CRM 225.167</span>
+        <span class="tag">RQE 129.273</span>
+        <span class="tag">Clínica Médica</span>
+        <span class="tag">Cuidado Integral</span>
+        <span class="tag">Longevidade</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><hr></div>
+
+<!-- SERVIÇOS -->
+<section class="servicos-wrap" id="servicos">
+  <div class="servicos-inner">
+    <div class="eyebrow">Consulta</div>
+    <div class="section-title">O que posso fazer por você.</div>
+    <div class="s-grid" style="margin-top:48px;">
+      <div class="s-card">
+        <div class="s-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </div>
+        <h3>Exames de rotina</h3>
+        <p>Avaliação completa do seu estado de saúde com base em histórico, hábitos e exames — para cuidar antes de precisar tratar.</p>
+      </div>
+      <div class="s-card">
+        <div class="s-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3l-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3l-3 3"/></svg>
+        </div>
+        <h3>Acompanhamento contínuo (cuidado integral)</h3>
+        <p>Consultas regulares para monitorar sua saúde ao longo do tempo — não só quando algo incomoda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section-pad como" id="como-funciona">
+  <div class="eyebrow">Como funciona</div>
+  <div class="section-title">Simples como deveria ser.</div>
+  <div class="steps-row" style="margin-top:52px;">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Agende online</h3>
+      <p>Escolha o melhor horário e agende sua teleconsulta em poucos cliques.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Consulta por vídeo</h3>
+      <p>Uma conversa completa sobre seu histórico, rotina e objetivos de saúde.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Plano e acompanhamento</h3>
+      <p>Orientações claras, pedidos de exames e acompanhamento contínuo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER / LEAD CAPTURE -->
+<section class="lead-section" id="newsletter">
+  <div class="lead-inner">
+    <div class="lead-content">
+      <div class="lead-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+      </div>
+      <h2 class="section-title">Receba conteúdos sobre saúde e longevidade.</h2>
+      <p class="lead-desc">Dicas práticas, novidades e orientações médicas direto no seu e-mail. Sem spam — só conteúdo que faz diferença.</p>
+    </div>
+    <form class="lead-form" id="leadForm" onsubmit="return handleLead(event)">
+      <div class="form-group">
+        <input type="text" name="fname" placeholder="Seu nome" required class="lead-input" autocomplete="given-name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="lname" placeholder="Seu sobrenome" class="lead-input" autocomplete="family-name">
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Seu melhor e-mail" required class="lead-input" autocomplete="email">
+      </div>
+      <button type="submit" class="lead-btn">
+        Quero receber
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </button>
+      <p class="form-note">Ao se cadastrar, você concorda em receber comunicações por e-mail. Pode cancelar a qualquer momento.</p>
+    </form>
+    <div class="lead-success" id="leadSuccess" style="display:none;">
+      <div class="success-icon">✓</div>
+      <p>Obrigada por se cadastrar. Em breve você receberá conteúdos exclusivos no seu e-mail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-wrap" id="duvidas">
+  <div class="faq-inner">
+    <div class="eyebrow">Dúvidas frequentes</div>
+    <div class="section-title">Tudo o que você precisa saber.</div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Qual o valor da consulta?</summary>
+        <p>A teleconsulta custa R$&nbsp;250. Após o agendamento, você recebe todas as orientações para o dia da consulta.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quanto tempo dura a consulta?</summary>
+        <p>Cerca de 1 hora, mas pode variar de acordo com cada caso. Trato cada paciente de forma única, com o tempo que ele merece.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A consulta inclui retorno?</summary>
+        <p>Sim. Cada consulta inclui 1 retorno no período de 30 dias, sem custo adicional.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Atende por plano de saúde?</summary>
+        <p>Não atendo por convênio, mas todas as consultas possuem nota fiscal que pode ser utilizada para pedido de reembolso junto ao seu plano.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="agendar">
+  <div class="cta-inner">
+    <h2>Sua saúde merece mais atenção.</h2>
+    <p>Agende sua teleconsulta com a Dra. Marina Rosalez.</p>
+    <a href="em-breve.html" class="btn-white">
+      Quero agendar uma consulta
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    <div class="cta-alt">
+      <span>Ainda tem dúvidas?</span>
+      <a href="em-breve.html" class="btn-whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Fale conosco pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contato">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Dra. Marina Rosalez</div>
+      <p>CRM 225.167 · RQE 129.273<br>Cuidado Integral, Longevidade e Teleconsulta</p>
+    </div>
+    <div class="footer-nav">
+      <a href="#sobre-mim">Sobre mim</a>
+      <a href="#servicos">Consulta</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="em-breve.html">Agendamento</a>
+    </div>
+    <div class="footer-icons">
+      <!-- Instagram -->
+      <a href="https://instagram.com/dramarinarosalez" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <!-- WhatsApp -->
+      <a href="em-breve.html" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <!-- Email -->
+      <a href="mailto:dramarinarosalez@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+      </a>
+      <!-- Agendamento -->
+      <a href="em-breve.html" aria-label="Agendamento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Dra. Marina Rosalez. Todos os direitos reservados.</span>
+  </div>
+</footer>
+
+<script>
+  // ═══ MOBILE MENU ═══
+  (function() {
+    const hamburger = document.getElementById('navHamburger');
+    const overlay = document.getElementById('navOverlay');
+    const overlayLinks = overlay ? overlay.querySelectorAll('a') : [];
+
+    function openMenu() {
+      hamburger.setAttribute('aria-expanded', 'true');
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      hamburger.setAttribute('aria-expanded', 'false');
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    if (hamburger && overlay) {
+      hamburger.addEventListener('click', function() {
+        if (overlay.classList.contains('is-open')) closeMenu();
+        else openMenu();
+      });
+      overlayLinks.forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+      });
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeMenu();
+      });
+      document.querySelector('.nav-logo').addEventListener('click', function() {
+        if (overlay.classList.contains('is-open')) closeMenu();
+      });
+    }
+  })();
+
+  // ═══ CONFIGURAÇÃO MAILCHIMP ═══
+  // Guia completo: veja o arquivo CONFIGURAR-MAILCHIMP.md
+  // Obtenha os valores em: Mailchimp → Audience → Signup forms → Embedded forms
+  const MAILCHIMP = {
+    u: '2775c3fe8282a6977acaf6d94',
+    id: 'fdff4cc693',
+    dc: 'us8'
+  };
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  function handleLead(e) {
+    e.preventDefault();
+    const form = document.getElementById('leadForm');
+    const fnameInput = form.querySelector('input[name="fname"]');
+    const lnameInput = form.querySelector('input[name="lname"]');
+    const emailInput = form.querySelector('input[name="email"]');
+    const fname = fnameInput.value.trim();
+    const lname = lnameInput ? lnameInput.value.trim() : '';
+    const email = emailInput.value.trim();
+    const btn = form.querySelector('button[type="submit"]');
+
+    if (!email) return false;
+
+    // Desabilita botão durante envio
+    btn.disabled = true;
+    btn.classList.add('is-loading');
+    btn.textContent = 'Enviando...';
+
+    const callbackName = 'mailchimpCallback' + Date.now();
+    window[callbackName] = function(data) {
+      btn.disabled = false;
+      btn.classList.remove('is-loading');
+      btn.innerHTML = 'Quero receber <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>';
+      if (data.result === 'success') {
+        form.style.display = 'none';
+        document.getElementById('leadSuccess').style.display = 'flex';
+      } else {
+        const msg = data.msg || 'Ocorreu um erro. Tente novamente.';
+        alert(msg);
+      }
+      delete window[callbackName];
+    };
+
+    const url = `https://${MAILCHIMP.dc}.list-manage.com/subscribe/post-json?` +
+      `u=${MAILCHIMP.u}&id=${MAILCHIMP.id}&` +
+      `EMAIL=${encodeURIComponent(email)}&FNAME=${encodeURIComponent(fname)}&LNAME=${encodeURIComponent(lname)}&` +
+      `c=${callbackName}`;
+
+    const script = document.createElement('script');
+    script.src = url;
+    script.type = 'text/javascript';
+    document.body.appendChild(script);
+
+    return false;
+  }
+</script>
+</body>
+</html>
