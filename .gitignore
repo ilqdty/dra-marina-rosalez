@@ -3,3 +3,6 @@ Thumbs.db
 *.swp
 *.zip
 test-git.txt
+.env
+.env.local
+*.pem
