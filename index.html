@@ -534,11 +534,13 @@
     padding-bottom: calc(24px + env(safe-area-inset-bottom));
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     transition: opacity 0.35s ease, visibility 0.35s ease;
   }
   .nav-overlay.is-open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
   .nav-overlay-inner {
     display: flex;
@@ -561,8 +563,10 @@
     transition: color 0.3s;
     width: 100%;
     max-width: 280px;
+    -webkit-tap-highlight-color: transparent;
   }
-  .nav-overlay-link:hover { color: var(--text); }
+  .nav-overlay-link:hover,
+  .nav-overlay-link:active { color: var(--text); }
   .nav-overlay-cta {
     margin-top: 16px;
     display: flex;
@@ -630,16 +634,7 @@
     .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
       transform: translateY(-8px) rotate(-45deg);
     }
-    .nav-right a:not(.nav-cta):not(.nav-mobile-visible),
-    .nav-social { display: none !important; }
-    .nav-mobile-visible {
-      display: flex !important;
-      align-items: center;
-      font-size: 0.85rem;
-      padding: 8px 12px;
-      min-height: 44px;
-    }
-    .nav-cta { display: none !important; }
+    .nav-right { display: none !important; }
     .hero {
       grid-template-columns: 1fr;
       padding: 100px 24px 0;
@@ -783,7 +778,7 @@
       <span></span><span></span><span></span>
     </button>
     <div class="nav-right">
-      <a href="#sobre-mim" class="nav-mobile-visible">Sobre mim</a>
+      <a href="#sobre-mim">Sobre mim</a>
       <a href="#servicos">Consulta</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#duvidas">Dúvidas</a>
@@ -1051,15 +1046,19 @@
 
     function openMenu() {
       hamburger.setAttribute('aria-expanded', 'true');
+      hamburger.setAttribute('aria-label', 'Fechar menu');
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
     }
     function closeMenu() {
       hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Abrir menu');
       overlay.classList.remove('is-open');
       overlay.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
     }
 
     if (hamburger && overlay) {
