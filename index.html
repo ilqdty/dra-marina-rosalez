@@ -219,7 +219,7 @@
   .sobre-mim-deco {
     width: 100%;
     max-width: 280px;
-    opacity: 0.15;
+    opacity: 0.22;
     color: var(--sage);
   }
   .sobre-mim-deco svg {
@@ -892,16 +892,14 @@
   <div class="sobre-mim-grid">
     <div class="sobre-mim-visual">
       <div class="sobre-mim-deco">
-        <svg viewBox="0 0 400 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="outliveWave" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#6B7F5E" stop-opacity="0.04"/>
-              <stop offset="50%" stop-color="#7A9B8A" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="#6B7F5E" stop-opacity="0.04"/>
-            </linearGradient>
-          </defs>
-          <path d="M0 90 C100 40 150 140 200 90 C250 40 300 140 400 90" stroke="url(#outliveWave)" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <path d="M0 100 C80 60 120 100 200 100 C280 100 320 60 400 100" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.4"/>
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="200" cy="200" r="180" stroke="currentColor" stroke-width="1"/>
+          <ellipse cx="200" cy="200" rx="130" ry="180" transform="rotate(30 200 200)" stroke="currentColor" stroke-width="0.8"/>
+          <ellipse cx="200" cy="200" rx="130" ry="180" transform="rotate(-30 200 200)" stroke="currentColor" stroke-width="0.8"/>
+          <circle cx="200" cy="200" r="80" stroke="currentColor" stroke-width="0.6"/>
+          <ellipse cx="120" cy="280" rx="35" ry="55" transform="rotate(-25 120 280)" stroke="currentColor" stroke-width="0.5"/>
+          <ellipse cx="280" cy="280" rx="35" ry="55" transform="rotate(25 280 280)" stroke="currentColor" stroke-width="0.5"/>
+          <ellipse cx="200" cy="80" rx="40" ry="50" transform="rotate(0 200 80)" stroke="currentColor" stroke-width="0.5"/>
         </svg>
       </div>
     </div>
