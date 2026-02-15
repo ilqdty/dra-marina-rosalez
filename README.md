@@ -58,6 +58,14 @@ git push -u origin main
 4. No Registro.br, vá em **Configurar zona DNS** e adicione os registros indicados
 5. Aguarde propagação (até 24h, geralmente minutos)
 
+## Push automático para GitHub
+
+Na pasta do projeto, **duplo-clique em `push.bat`** para fazer add, commit e push de uma vez. A Vercel fará o deploy em ~1 minuto.
+
+Ou use **Source Control** (`Ctrl+Shift+G`) no Cursor → Commit → Sync Changes.
+
+---
+
 ## Placeholders para configurar
 
 | Item | Onde trocar | O que colocar |

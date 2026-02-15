@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "inputs": [
+    {
+      "id": "commitMsg",
+      "type": "promptString",
+      "description": "Mensagem do commit",
+      "default": "Atualizacao"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "Push para GitHub",
+      "type": "shell",
+      "command": "git add . && git status --short && git commit -m \"${input:commitMsg}\" && git push origin main",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

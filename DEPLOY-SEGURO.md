@@ -73,6 +73,8 @@ git push -u origin main
 
 **Depois disso:** sempre que editar, use **Source Control** (`Ctrl+Shift+G`) → **Commit** → **Sync Changes** (ou **Push**). A Vercel fará o deploy automático em ~1 minuto.
 
+**Push rápido:** duplo-clique em `push.bat` na pasta do projeto para fazer add, commit e push de uma vez.
+
 ---
 
 ## Passo 3 — Criar conta na Vercel

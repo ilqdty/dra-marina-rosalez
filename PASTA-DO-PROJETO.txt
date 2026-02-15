@@ -1,0 +1,5 @@
+Pasta única do projeto:
+C:\Users\alves\OneDrive\Negócios\Dra Marina\Landing Page
+
+Use APENAS esta pasta para editar e fazer push.
+O repositório Git está configurado aqui.
