@@ -108,14 +108,34 @@
 </head>
 <body>
   <div class="content">
-    <div class="eyebrow">Em breve</div>
-    <h1>Esta funcionalidade está em construção</h1>
-    <p>Estamos preparando tudo para você. Em breve este conteúdo estará disponível aqui.</p>
-    <p>Enquanto isso, acompanhe nossas redes sociais ou entre em contato pelos canais disponíveis no site.</p>
+    <div class="eyebrow" id="eyebrow">Em breve</div>
+    <h1 id="title">Esta funcionalidade está em construção</h1>
+    <p id="desc">Estamos preparando tudo para você. Em breve este conteúdo estará disponível aqui.</p>
+    <p id="sub">Enquanto isso, acompanhe nossas redes sociais ou entre em contato pelos canais disponíveis no site.</p>
     <a href="index.html" class="btn-back">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18"/></svg>
       Voltar ao site
     </a>
   </div>
+  <script>
+    (function() {
+      var p = new URLSearchParams(window.location.search).get('tipo');
+      var title = document.getElementById('title');
+      var desc = document.getElementById('desc');
+      var sub = document.getElementById('sub');
+      var eyebrow = document.getElementById('eyebrow');
+      if (p === 'agendamento') {
+        if (eyebrow) eyebrow.textContent = 'Agendamento';
+        if (title) title.textContent = 'Agendamento em breve';
+        if (desc) desc.textContent = 'Estamos preparando o sistema de agendamento online. Em breve você poderá escolher o melhor horário para sua teleconsulta.';
+        if (sub) sub.textContent = 'Enquanto isso, entre em contato pelo WhatsApp ou e-mail para agendar.';
+      } else if (p === 'whatsapp') {
+        if (eyebrow) eyebrow.textContent = 'WhatsApp';
+        if (title) title.textContent = 'WhatsApp em breve';
+        if (desc) desc.textContent = 'Em breve você poderá falar conosco diretamente pelo WhatsApp.';
+        if (sub) sub.textContent = 'Enquanto isso, envie um e-mail para dramarinarosalez@gmail.com ou volte ao site para outras opções.';
+      }
+    })();
+  </script>
 </body>
 </html>
